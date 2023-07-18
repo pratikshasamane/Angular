@@ -1,0 +1,94 @@
+<p class="head">login works!</p>
+<style>
+  .head {
+    color: yellow;
+  }
+</style>
+<input type="text" placeholder="event keyup" (keyup)="getValue('hello')" />
+<br /><br />
+<input
+  type="text"
+  #id
+  placeholder="event keypress"
+  (keypress)="getValue(id.value)"
+/>
+<br /><br />
+<input
+  type="text"
+  #id2
+  placeholder="event down"
+  ((keydown))="getValue(id2.value)"
+/>
+
+<br /><br />
+<input type="text" #id3 placeholder="event blur" (blur)="getValue(id3.value)" />
+<br /><br />
+<h3 (mouseover)="getValue('It is over')">Mouse Hover</h3>
+<br /><br />
+<input type="text" #id4 placeholder="display value" />
+<button
+  type="button"
+  class="btn btn-primary"
+  (click)="getInputValue(id4.value)"
+>
+  Get Value
+</button>
+
+<p>Input value is: {{ displayvalue }}</p>
+<br /><br />
+
+<!--COunter exapmle-->
+
+<h4>Counter example</h4>
+<button type="button" (click)="counter('add')" class="btn btn-increment">
+  ++
+</button>
+
+<p>Counter value is: {{ count }}</p>
+<button type="button" (click)="counter('minus')" class="btn btn-decrement">
+  --
+</button>
+
+<br /><br />
+
+<!--IF else-->
+
+<h1 *ngIf="show; then ifblock; else elseblock">im if bloak (true)</h1>
+
+<ng-template #ifblock><h3>im if bloack (true)</h3></ng-template>
+<ng-template #elseblock> <h3>I'm else block(false)</h3></ng-template>
+
+<br /><br />
+
+<h3>{{ swtichcs }}</h3>
+
+<div [ngSwitch]="text_color">
+  <h1 *ngSwitchCase="'red'" style="color: red">Red color</h1>
+  <h1 *ngSwitchCase="'green'" style="color: green">Red color</h1>
+  <h1 *ngSwitchCase="'blue'" style="color: blue">Red color</h1>
+</div>
+
+<h3>{{ forloop }}</h3>
+
+<h4 *ngFor="let i of users">{{ i }}</h4>
+<h4 *ngFor="let i of usersDetails">{{ i.name }} - {{ i.email }}</h4>
+
+<h3>nested loop</h3>
+
+<ul *ngFor="let i of usersDetailsNested">
+  <li>{{ i.name }} -- {{ i.email }}</li>
+  <ul *ngFor="let i2 of i.petname">
+    <li>{{ i2 }}</li>
+  </ul>
+</ul>
+
+<h3>Dynamic binding</h3>
+
+<h2
+  [style.color]="dynamic_text_color"
+  [style.backgroundColor]="dynamic_bg_color"
+>
+  I'm dynamic binding
+</h2>
+
+<button (click)="updateColor()">Update color</button>

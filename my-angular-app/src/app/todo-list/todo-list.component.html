@@ -1,0 +1,24 @@
+<div class="container d-flex justify-content-center align-items-center">
+  <mat-form-field class="example-full-width">
+    <mat-label>Add to do list</mat-label>
+    <input matInput placeholder="Enter list" #todoinput />
+  </mat-form-field>
+  <br /><br />
+</div>
+
+<div class="container d-flex justify-content-center align-items-center">
+  <button type="button" class="btn btn-info" (click)="addData(todoinput.value)">
+    Add List
+  </button>
+</div>
+<br />
+
+<ul *ngFor="let items of allTodos">
+  <div class="d-flex justify-content-center align-items-center">
+    <li>{{ items.name }}</li>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary" (click)="removeTodo(items.id)">
+      Remove
+    </button>
+  </div>
+</ul>
