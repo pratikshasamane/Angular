@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary py-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#" (click)="backtoHome($event)"
+      >User Dashboard</a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="nav justify-content-end">
+      <li class="nav-item nav-pills">
+        <button
+          type="button"
+          class="btn btn-dark"
+          href="#"
+          (click)="newUser($event)"
+        >
+          New User
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

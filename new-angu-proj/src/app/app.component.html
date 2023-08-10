@@ -1,0 +1,49 @@
+<!-- <h2>Toggle Element</h2>
+<p *ngIf="displayme">Toggle me this string</p>
+<button (click)="displayToggle()">Togle above string</button>
+
+<app-form></app-form>
+
+<h1>{{ datafromChild }}</h1>
+<app-child (updatedataevent)="updateData($event)"></app-child>
+
+<h2>Get INPUT field</h2>
+<input
+  placeholder="enter value"
+  #box
+  name="input0"
+  (keyup)="getValue(box.value)"
+/>
+<p>Input value is:- {{ displayVal }}</p>
+<H2> Counter Example</H2>
+<button (click)="counter('minuss')">--</button>
+<p>Counter: {{ count }}</p>
+<button (click)="counter('add')">++</button>
+
+<h2>If condition</h2>
+
+<h1 *ngIf="show; then ifid; else elseid">If conditions</h1>
+
+<ng-template #ifid>
+  <h2>If block</h2>
+</ng-template>
+
+<ng-template #elseid>
+  <h2>else block</h2>
+</ng-template>
+
+<h2>For loop</h2>
+<ul>
+  <li *ngFor="let item of users">{{ item }}</li>
+</ul>
+
+<h2>Object array loop</h2>
+
+<ul>
+  <li *ngFor="let item of userDetails">{{ item.name }} {{ item.age }}</li>
+</ul> -->
+<app-navbar></app-navbar>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>

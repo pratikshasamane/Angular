@@ -1,0 +1,50 @@
+<div class="row">
+  <h2 class="mt-4" style="text-align: center">
+    {{ isUpdating ? "Update" : "Create" }} user
+  </h2>
+  <div class="mx-auto mt-2 col-10 col-md-8 col-lg-6 border rounded">
+    <form class="row g-3 py-3" (submit)="onSubmit()">
+      <div class="col-md-6">
+        <label for="validationDefault01" class="form-label">First name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="firstname"
+          [(ngModel)]="selectedUser.firstname"
+          placeholder="First name"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="validationDefault02" class="form-label">Last name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastname"
+          placeholder="Last name"
+          [(ngModel)]="selectedUser.lastname"
+          required
+        />
+      </div>
+
+      <div class="col-md-6">
+        <label for="validationDefault03" class="form-label">Email</label>
+        <input
+          type="text"
+          name="Email"
+          class="form-control"
+          id="validationDefault03"
+          placeholder="Email"
+          [(ngModel)]="selectedUser.email"
+          required
+        />
+      </div>
+
+      <div class="col-12 text-center">
+        <button class="btn btn-dark" type="submit">
+          {{ isUpdating ? "Update" : "Create" }}
+        </button>
+      </div>
+    </form>
+    '
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<table class="table mt-4" style="text-align: center">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">email</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user._id }}</td>
+      <td class="text-capitalize">{{ user.firstname }}</td>
+      <td class="text-capitalize">{{ user.lastname }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-dark"
+          (click)="deleteUser(user._id)"
+        >
+          Delete</button
+        >&nbsp;&nbsp;
+        <button type="button" class="btn btn-light" (click)="doUpdate(user)">
+          Update
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
