@@ -1,0 +1,78 @@
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  background-image: url(./assets/notes-bg.jpg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.custom-footer {
+  background-color: lightyellow;
+}
+.navbar-brand {
+  color: white;
+  font-size: 35px;
+  text-align: center;
+}
+
+.icon-color {
+  color: white;
+}
+.custom-card {
+  max-width: 300px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  margin-top: 50px;
+}
+
+.custom-card hr {
+  margin: 15px 0;
+}
+
+.custom-card .card-text {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.custom-card .dropdown-menu {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  left: auto !important;
+  right: 0;
+}
+
+.custom-card .date {
+  margin-right: 64px;
+}
+
+.add-new p {
+  text-align: center;
+  margin-top: 8px;
+}
+.plus-icon {
+  font-size: 35px;
+}
+.dashed-circle {
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  border: 2px dashed #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

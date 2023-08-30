@@ -1,0 +1,70 @@
+<mat-card
+  class="card-container bg-white mx-auto mt-2 col-10 col-md-8 col-lg-6 border rounded"
+>
+  <form class="form row g-3 py-3" (submit)="onSubmit($event)">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input
+        type="text"
+        matInput
+        [(ngModel)]="selectedNote.title"
+        name="title"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="selectedNote.paragraph"
+        name="description"
+        required
+      ></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button class="btn" color="primary" type="submit">
+      {{ isUpdating ? "Update" : "Add" }}
+    </button>
+  </form>
+</mat-card>
+
+<!-- <div class="row">
+  <h2 class="mt-4 text-white" style="text-align: center">
+    {{ isUpdating ? "Update" : "Add" }} note
+  </h2>
+  <div class="mx-auto mt-2 col-10 col-md-8 col-lg-6 border rounded bg-white">
+    <form class="row g-3 py-3" (submit)="onSubmit($event)">
+      <div class="col-md-6">
+        <label for="validationDefault01" class="form-label">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="validationDefault01"
+          name="title"
+          [(ngModel)]="selectedNote.title"
+          placeholder="Please add title"
+        />
+      </div>
+      <div>
+        <label for="validationDefault02" class="form-label">Description</label>
+        <textarea
+          type="text"
+          class="form-control"
+          id="validationDefault02"
+          name="paragraph"
+          placeholder="Please add note here"
+          [(ngModel)]="selectedNote.paragraph"
+          required
+        ></textarea>
+      </div>
+
+      <div class="col-12 text-center">
+        <button class="btn btn-dark" type="submit">
+          {{ isUpdating ? "Update" : "Add" }}
+        </button>
+      </div>
+    </form>
+    '
+  </div>
+</div> -->

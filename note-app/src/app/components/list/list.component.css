@@ -1,0 +1,107 @@
+.custom-cursor {
+  cursor: pointer;
+  width: 315px;
+  height: 153px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.mat-card {
+  max-width: 300px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 10px;
+  margin-top: 50px;
+}
+.container {
+  display: flex;
+}
+
+.mat-card .card-text {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.mat-paginator {
+  background-color: unset;
+  color: white;
+  margin-top: 20px;
+}
+.mat-form-field.mat-select .mat-select-trigger {
+  color: white; /* Change to your desired font color */
+}
+.multi-cards .mat-card {
+  flex: 1;
+}
+.main-list {
+  display: flex;
+}
+.edit-icon {
+  color: #201d1d;
+}
+.bottom-content {
+  display: flex;
+  justify-content: space-between;
+}
+.mat-icon-button {
+  background-color: unset;
+}
+.bottom-content:first-child {
+  margin-left: -8px;
+  margin-right: -8px;
+  padding: 8px 0;
+}
+.bottom-content .mat-card-actions {
+  margin: 0 5px;
+}
+.bottom-content .mat-card-content {
+  flex: 1;
+  max-width: calc(50% - 10px);
+  margin: 0 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.delete-icon {
+  color: #f11b1b;
+}
+
+.bottom-content .mat-card-content {
+  width: calc(50% - 10px);
+  margin: 0 5px;
+}
+.dashed-circle {
+  margin: auto;
+  width: 80px;
+  height: 80px;
+  border: 2px dashed #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*===================*/
+.mat-card .dropdown-menu {
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  left: auto !important;
+  right: 0;
+}
+
+.add-new p {
+  text-align: center;
+  margin-top: 8px;
+}
+.plus-icon {
+  font-size: 35px;
+}
