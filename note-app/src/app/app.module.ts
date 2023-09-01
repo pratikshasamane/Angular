@@ -8,8 +8,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CreateUpdateComponent } from './components/create-update/create-update.component';
 import { ListComponent } from './components/list/list.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import {
   MatPaginatorIntl,
@@ -22,10 +23,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { LoginComponent } from './components/login/login.component';
-import { LogoutComponent } from './components/logout/logout.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './auth.gaurd';
+import { JwtInterceptor } from './jwt.interceptor';
 const paths: Routes = [
-  { path: 'validate/login', component: LoginComponent },
-  { path: '', component: ListComponent },
+  { path: '', component: ListComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+
   { path: 'createupdate', component: CreateUpdateComponent },
   { path: 'createupdate/:id', component: CreateUpdateComponent },
 ];
@@ -38,7 +43,7 @@ const paths: Routes = [
     CreateUpdateComponent,
     ListComponent,
     LoginComponent,
-    LogoutComponent,
+    RegisterComponent,
   ],
 
   imports: [
@@ -55,9 +60,14 @@ const paths: Routes = [
     MatCardModule,
     MatDividerModule,
     MatPaginatorModule,
+    ReactiveFormsModule,
   ],
 
-  providers: [MatPaginatorIntl],
+  providers: [
+    AuthGuard,
+    MatPaginatorIntl,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

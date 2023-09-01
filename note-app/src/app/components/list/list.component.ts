@@ -1,18 +1,12 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  Output,
-  EventEmitter,
-  ViewChild,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NotesServicesService } from 'src/app/services/notes-services.service';
 import { Notes } from 'src/app/notes';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
@@ -26,12 +20,27 @@ export class ListComponent implements OnInit {
 
   constructor(
     private _notesservice: NotesServicesService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   obs: Observable<any>;
+
+  message: String = '';
+
   ngOnInit(): void {
+    this._notesservice.getUser().subscribe(
+      (res) => {
+        console.log(res);
+        console.log('am i executing ');
+
+        this.message = `Welcome ${res}`;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
     this.getNotes();
   }
 
@@ -39,6 +48,9 @@ export class ListComponent implements OnInit {
     this._notesservice.getNotes().subscribe(
       (data: Notes[]) => {
         this.notes = data;
+
+        console.log(data);
+
         this.dataSource = new MatTableDataSource<Notes>(this.notes);
         this.obs = this.dataSource.connect();
         this.dataSource.paginator = this.paginator;

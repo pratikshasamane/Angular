@@ -3,3 +3,12 @@ export class Notes {
   public title: string;
   public paragraph: string;
 }
+
+interface TokenResponse {
+  token: string;
+}
+
+export interface TokenPayload {
+  email: string;
+  password: string;
+}
