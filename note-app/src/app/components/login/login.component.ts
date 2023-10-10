@@ -33,27 +33,9 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
 
-    // this.returnUrl = this.route.snapshot.queryParams['/'];
+    // this.notesService.logout();
   }
 
-  // login() {
-  //   const credentials = this.loginForm.value;
-  //   this.notesService.loginNotes(credentials).subscribe(
-  //     (data) => {
-  //       console.log(credentials);
-  //       console.log('this is data', data);
-
-  //       if (data.accessToken) {
-  //         localStorage.setItem('authToken', data.accessToken);
-
-  //         this.router.navigate(['/']);
-  //       }
-  //     },
-  //     (error) => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
   onSubmit() {
     this.submitted = true;
 
@@ -62,21 +44,19 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
     this.notesService
       .login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         (data) => {
-          // console.log(data);
-
-          this.router.navigate(['/']);
+          window.location.href = '/';
         },
         (error) => {
-          // this.alertService.error(error);
-          Swal.fire('Facing errors', 'This is a message', 'error');
-
-          this.loading = false;
+          Swal.fire(
+            'Incorrect email or password',
+            'This is a message',
+            'error'
+          );
         }
       );
   }

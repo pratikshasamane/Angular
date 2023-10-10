@@ -65,4 +65,8 @@
   <ul class="list-group" *ngFor="let detail of userDetails">
     <app-parenttochild [item]="detail"></app-parenttochild>
   </ul>
+
+  <app-childtoparent
+    (updatedatafromchild)="updatedata($event)"
+  ></app-childtoparent>
 </div>

@@ -27,15 +27,15 @@ export class ListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   obs: Observable<any>;
 
+  data: [];
   message: String = '';
 
   ngOnInit(): void {
     this._notesservice.getUser().subscribe(
-      (res) => {
+      (res: any) => {
         console.log(res);
-        console.log('am i executing ');
 
-        this.message = `Welcome ${res}`;
+        this.message = `Welcome ${res.name},`;
       },
       (error) => {
         console.log(error);

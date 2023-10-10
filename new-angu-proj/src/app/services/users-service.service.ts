@@ -33,11 +33,9 @@ export class UsersServiceService {
     });
   }
 
-  setter(user: Users) {
-    this.user = user;
-  }
-
-  getter() {
-    return this.user;
+  searchByEmail(email: string): Observable<any> {
+    return this.http.get<Users>(`${this.baseUrl}/search?email=${email}`, {
+      headers: this.headers,
+    });
   }
 }

@@ -3,10 +3,24 @@
     <a class="navbar-brand" href="#">
       <i class="fas fa-book icon-color"></i> Keep notes
     </a>
-    <button class="btn btn-light my-2 my-sm-0" (click)="login()">Login</button
-    >&nbsp;&nbsp;
-    <button class="btn btn-light my-2 my-sm-0" (click)="register()">
-      Register
-    </button>
   </div>
+
+  <button
+    (click)="profile()"
+    mat-raised-button
+    color="primary"
+    class="btn-link logout-btn"
+    *ngIf="isAuthenticate"
+  >
+    Profile
+  </button>
+  <button
+    (click)="logout_ref()"
+    mat-raised-button
+    color="primary"
+    class="btn-link logout-btn"
+    *ngIf="isAuthenticate"
+  >
+    Logout
+  </button>
 </nav>

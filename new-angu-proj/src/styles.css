@@ -4,3 +4,8 @@
 body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
+
+.search-focus:focus {
+  box-shadow: 0 0 0 0.1px rgb(16 18 18);
+  border-color: #b4c1d057;
+}

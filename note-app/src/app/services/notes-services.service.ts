@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Notes, TokenPayload } from '../notes';
+import { Notes } from '../notes';
 import { ValidationModel } from '../validation-model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -13,19 +13,16 @@ export class NotesServicesService {
   public baseUrl: string = 'http://localhost:8010/api/';
   public regis: string = 'http://localhost:8010/';
 
-  public headers = new HttpHeaders().set('Content-Type', 'application/json');
+  token: string = JSON.parse(localStorage.getItem('accessToken'));
+
+  public headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    authorization: `Bearer ${this.token}`,
+  });
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  private accessToken = '';
-
-  // baseurl, data to be passed, header
-  // loginNotes(credentials: ValidationModel): Observable<any> {
-  //   return this.http.post(this.regis + 'validate/login', credentials, {
-  //     withCredentials: true,
-  //   });
-  // }
-
+  // Login
   login(email: string, password: string) {
     return this.http
       .post<any>(this.regis + 'validate/login', {
@@ -35,14 +32,13 @@ export class NotesServicesService {
       .pipe(
         map((user) => {
           // login successful if there's a jwt token in the response
-          console.log('im presetn in login');
 
-          console.log(user.accessToken);
-          if (user || user.accesstoken) {
-            console.log('came here');
-
+          if (user) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('accessToken', JSON.stringify(user));
+            localStorage.setItem(
+              'accessToken',
+              JSON.stringify(user.accessToken)
+            );
           }
 
           return user;
@@ -50,19 +46,9 @@ export class NotesServicesService {
       );
   }
 
-  logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('accessToken');
-  }
-
+  //Register
   register(registerData: ValidationModel): Observable<any> {
     return this.http.post(this.regis + 'validate/register', registerData);
-  }
-
-  registerNotes(registerData: ValidationModel): Observable<any> {
-    return this.http.post(this.regis + 'validate/register', registerData, {
-      withCredentials: true,
-    });
   }
 
   getUser() {

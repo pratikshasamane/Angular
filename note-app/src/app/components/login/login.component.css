@@ -1,6 +1,10 @@
 .loginForm {
-  width: 50%;
   display: grid;
-  place-items: center;
+  justify-content: center;
+  width: 50%;
   margin: auto;
+}
+
+.login-btn {
+  margin-right: 10px;
 }

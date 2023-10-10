@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
   title = 'my-angular-app';
+  /* Data to child  */
   datatoChild: string = ' Im coming from parent side (parent to child)';
 
   userDetails: any = [
@@ -27,4 +28,8 @@ export class AppComponent {
       email: 'anc@test.com',
     },
   ];
+
+  updatedata(item: string) {
+    console.log(item);
+  }
 }

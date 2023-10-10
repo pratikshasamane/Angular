@@ -1,31 +1,88 @@
+<div class="container mt-4 mb-4">
+  <div class="row justify-content-end">
+    <div class="col-md-4">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control search-focus"
+          placeholder="Search"
+          #searchValue
+          (input)="onSearchInputChange(searchValue.value)"
+        />
+
+        <div class="input-group-append">
+          <button
+            class="btn btn-dark"
+            type="button"
+            style="min-width: 50px"
+            (click)="doSearch(searchValue.value)"
+          >
+            Go
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3 style="text-align: center" class="mb-1">Users List</h3>
 <table class="table mt-4" style="text-align: center">
   <thead>
     <tr>
-      <th scope="col">Id</th>
+      <th scope="col">ID</th>
       <th scope="col">First name</th>
       <th scope="col">Last name</th>
-      <th scope="col">email</th>
+      <th scope="col">Email</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{ user._id }}</td>
-      <td class="text-capitalize">{{ user.firstname }}</td>
-      <td class="text-capitalize">{{ user.lastname }}</td>
-      <td>{{ user.email }}</td>
-      <td>
-        <button
-          type="button"
-          class="btn btn-dark"
-          (click)="deleteUser(user._id)"
-        >
-          Delete</button
-        >&nbsp;&nbsp;
-        <button type="button" class="btn btn-light" (click)="doUpdate(user)">
-          Update
-        </button>
-      </td>
-    </tr>
+    <ng-container *ngIf="shouldDisplayDefaultList(); else searchList">
+      <tr *ngFor="let user of users">
+        <td>{{ user._id }}</td>
+        <td class="text-capitalize">{{ user.firstname }}</td>
+        <td class="text-capitalize">{{ user.lastname }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-dark"
+            (click)="deleteUser(user._id)"
+          >
+            Delete</button
+          >&nbsp;&nbsp;
+          <button type="button" class="btn btn-light" (click)="doUpdate(user)">
+            Update
+          </button>
+        </td>
+      </tr>
+    </ng-container>
+
+    <ng-container #searchList>
+      <ng-container *ngFor="let user of searchResult | keyvalue">
+        <tr *ngFor="let userInside of user.value">
+          <td>{{ userInside._id }}</td>
+          <td class="text-capitalize">{{ userInside.firstname }}</td>
+          <td class="text-capitalize">{{ userInside.lastname }}</td>
+          <td>{{ userInside.email }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-dark"
+              (click)="deleteUser(user._id)"
+            >
+              Delete</button
+            >&nbsp;&nbsp;
+            <button
+              type="button"
+              class="btn btn-light"
+              (click)="doUpdate(user)"
+            >
+              Update
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+    </ng-container>
   </tbody>
 </table>

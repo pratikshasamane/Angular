@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class ListComponent implements OnInit {
   public users: Users[];
+  public searchResult: Users[];
+
   constructor(
     private _userService: UsersServiceService,
     private router: Router
@@ -42,5 +44,30 @@ export class ListComponent implements OnInit {
 
   doUpdate(user: Users) {
     this.router.navigate([`/createUpdate/${user._id}`]);
+  }
+
+  searchValue: String = '';
+
+  doSearch(searchValue: string) {
+    this._userService.searchByEmail(searchValue).subscribe(
+      (data: Users[]) => {
+        this.searchResult = data;
+        console.log(this.searchResult);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  onSearchInputChange(inputValue: string) {
+    if (!inputValue) {
+      // Display default list when search input is empty
+      this.searchResult = [];
+    }
+  }
+  shouldDisplayDefaultList(): boolean {
+    // Return true if the search input is empty or if the search result is empty
+    return !this.searchResult || Object.keys(this.searchResult).length === 0;
   }
 }

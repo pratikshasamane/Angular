@@ -1,0 +1,10 @@
+.mat-card {
+  width: 50%;
+  margin: auto;
+  display: grid;
+  justify-content: center;
+  margin-top: 85px;
+}
+.mat-card-content:nth-child(2) {
+  text-transform: capitalize;
+}

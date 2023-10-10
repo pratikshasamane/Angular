@@ -14,7 +14,6 @@ export class CreateUpdateComponent implements OnInit {
     lastname: '',
     email: '',
     isActive: true,
-    // Add other properties as needed
   };
 
   constructor(
@@ -28,8 +27,6 @@ export class CreateUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const userId = params['id'];
-
-      console.log(userId);
       if (userId) {
         this.isUpdating = true;
         this.getUser(userId);
@@ -40,12 +37,7 @@ export class CreateUpdateComponent implements OnInit {
   getUser(id: number) {
     this._userService.getUserById(id).subscribe(
       (data) => {
-        console.log(data);
         this.selectedUser = data;
-
-        console.log(this.isUpdating);
-
-        console.log(this.selectedUser);
       },
       (error) => {
         console.log('Error present', error);

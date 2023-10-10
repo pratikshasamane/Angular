@@ -26,6 +26,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './auth.gaurd';
 import { JwtInterceptor } from './jwt.interceptor';
+import { ProfileComponent } from './components/profile/profile.component';
 const paths: Routes = [
   { path: '', component: ListComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
@@ -33,6 +34,7 @@ const paths: Routes = [
 
   { path: 'createupdate', component: CreateUpdateComponent },
   { path: 'createupdate/:id', component: CreateUpdateComponent },
+  { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({
@@ -44,6 +46,7 @@ const paths: Routes = [
     ListComponent,
     LoginComponent,
     RegisterComponent,
+    ProfileComponent,
   ],
 
   imports: [

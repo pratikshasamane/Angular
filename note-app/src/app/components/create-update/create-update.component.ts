@@ -27,8 +27,10 @@ export class CreateUpdateComponent implements OnInit {
     this.route.params.subscribe((params) => {
       const note_id = params['id'];
       if (note_id) {
+        
         this.isUpdating = true;
-
+        
+        console.log(note_id);
         this.getNote(note_id);
       }
     });
@@ -37,6 +39,8 @@ export class CreateUpdateComponent implements OnInit {
   getNote(id: number) {
     this.notesService.getNoteById(id).subscribe(
       (data: Notes) => {
+        console.log(data);
+
         this.selectedNote = data;
       },
       (error) => {
@@ -53,15 +57,6 @@ export class CreateUpdateComponent implements OnInit {
     }
   }
   updateNote() {
-    // try {
-    //   const response = await this.notesService
-    //     .updateNotes(this.selectedNote)
-    //     .toPromise();
-    //   console.log('Item updated successfully', response);
-    //   this.router.navigate(['/']);
-    // } catch (error) {
-    //   console.error('Error updating item', error);
-    // }
     this.notesService.updateNotes(this.selectedNote).subscribe(
       (data) => {
         console.log('User updated successfully', data);
@@ -76,7 +71,6 @@ export class CreateUpdateComponent implements OnInit {
   createNote() {
     this.notesService.createNotes(this.selectedNote).subscribe(
       (data) => {
-        console.log(data);
         this.router.navigate(['/']);
       },
       (error) => {
